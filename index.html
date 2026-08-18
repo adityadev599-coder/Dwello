@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dwello - Your Urban Living Assistant</title>
+    <title>Dwello - Urban Living Assistant</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts -->
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
@@ -18,234 +20,181 @@
     <!-- Font Awesome -->
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
+            font-family: "Poppins", sans-serif;
         }
 
-        .primary-btn {
-            transition: all 0.3s ease;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+        .card {
+            transition: 0.3s ease;
         }
 
-        .card-hover {
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+        .card:hover {
+            transform: translateY(-6px);
         }
 
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow:
-                0 20px 25px -5px rgb(0 0 0 / 0.1),
-                0 8px 10px -6px rgb(0 0 0 / 0.1);
-            border-color: #4f46e5;
+        .btn {
+            transition: 0.3s ease;
         }
 
-        .search-wrapper {
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-tab.active {
-            background-color: #4f46e5;
-            color: white;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .spotlight-section.is-visible .phone-mockup {
-            opacity: 1;
-            transform: translateY(0);
-            transition:
-                transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
-                opacity 0.8s ease;
-        }
-
-        .spotlight-section.is-visible .spotlight-content {
-            opacity: 1;
-            transform: translateY(0);
-            transition:
-                transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s,
-                opacity 0.8s ease 0.2s;
-        }
-
-        .spotlight-section.is-visible .mockup-item {
-            animation: slideInUp 0.6s ease-out forwards;
-        }
-
-        .mockup-item:nth-child(1) {
-            animation-delay: 0.5s;
-        }
-
-        .mockup-item:nth-child(2) {
-            animation-delay: 0.7s;
-        }
-
-        .mockup-item:nth-child(3) {
-            animation-delay: 0.9s;
-        }
-
-        .mockup-item:nth-child(4) {
-            animation-delay: 1.1s;
+        .btn:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
 
-<body class="text-slate-800">
+<body class="bg-slate-50 text-slate-800">
 
-    <!-- ==================== HEADER ==================== -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<!-- ================= NAVBAR ================= -->
 
-            <a href="#" class="text-2xl font-bold text-indigo-600">
-                Dwello
-            </a>
+<header class="bg-white shadow-sm sticky top-0 z-50">
 
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#services" class="text-slate-600 hover:text-indigo-600">
-                    Services
-                </a>
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-                <a href="#listings" class="text-slate-600 hover:text-indigo-600">
-                    Listings
-                </a>
+        <!-- Logo -->
+        <a href="#home" class="text-2xl font-bold text-indigo-600">
+            Dwello
+        </a>
 
-                <a href="#about" class="text-slate-600 hover:text-indigo-600">
-                    About Us
-                </a>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-8">
 
-                <a href="#contact" class="text-slate-600 hover:text-indigo-600">
-                    Contact
-                </a>
-            </div>
-
-            <!-- Desktop Actions -->
-            <div class="hidden md:flex items-center space-x-4">
-                <a
-                    href="#list-property"
-                    class="text-indigo-600 hover:text-indigo-800 font-semibold"
-                >
-                    List Your Property
-                </a>
-
-                <a
-                    href="#"
-                    class="text-slate-600 hover:text-indigo-600 font-medium"
-                >
-                    Log In
-                </a>
-
-                <a
-                    href="#"
-                    class="primary-btn bg-indigo-600 text-white font-semibold px-6 py-2.5 rounded-lg"
-                >
-                    Sign Up
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button
-                id="mobile-menu-button"
-                class="md:hidden"
-                aria-label="Open mobile menu"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h16m-7 6h7"
-                    />
-                </svg>
-            </button>
-        </nav>
-
-        <!-- Mobile Navigation -->
-        <div
-            id="mobile-menu"
-            class="hidden md:hidden px-6 pb-4 space-y-2"
-        >
-            <a
-                href="#services"
-                class="block text-slate-600 hover:text-indigo-600"
-            >
+            <a href="#services"
+               class="text-slate-600 hover:text-indigo-600">
                 Services
             </a>
 
-            <a
-                href="#listings"
-                class="block text-slate-600 hover:text-indigo-600"
-            >
+            <a href="#listings"
+               class="text-slate-600 hover:text-indigo-600">
                 Listings
             </a>
 
-            <a
-                href="#about"
-                class="block text-slate-600 hover:text-indigo-600"
-            >
-                About Us
+            <a href="#about"
+               class="text-slate-600 hover:text-indigo-600">
+                About
             </a>
 
-            <a
-                href="#contact"
-                class="block text-slate-600 hover:text-indigo-600"
-            >
+            <a href="#contact"
+               class="text-slate-600 hover:text-indigo-600">
                 Contact
             </a>
 
-            <hr>
-
-            <a
-                href="#list-property"
-                class="block text-slate-600 hover:text-indigo-600"
-            >
-                List Your Property
-            </a>
-
-            <a
-                href="#"
-                class="block text-slate-600 hover:text-indigo-600"
-            >
-                Log In
-            </a>
-
-            <a
-                href="#"
-                class="block primary-btn bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg text-center"
-            >
-                Sign Up
-            </a>
         </div>
-    </header>
+
+        <!-- Desktop Buttons -->
+        <div class="hidden md:flex items-center gap-4">
+
+            <a href="#list-property"
+               class="text-indigo-600 font-semibold hover:text-indigo-800">
+                List Property
+            </a>
+
+            <button
+                onclick="showMessage('Login feature is available in the future version.')"
+                class="text-slate-600 hover:text-indigo-600">
+                Log In
+            </button>
+
+            <button
+                onclick="showMessage('Sign Up feature is available in the future version.')"
+                class="btn bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-semibold">
+                Sign Up
+            </button>
+
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+            id="menuButton"
+            class="md:hidden text-slate-700 text-xl"
+            aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white border-t px-6 py-4">
+
+        <div class="flex flex-col gap-4">
+
+            <a href="#services" class="mobile-link">
+                Services
+            </a>
+
+            <a href="#listings" class="mobile-link">
+                Listings
+            </a>
+
+            <a href="#about" class="mobile-link">
+                About
+            </a>
+
+            <a href="#contact" class="mobile-link">
+                Contact
+            </a>
+
+            <a href="#list-property" class="mobile-link">
+                List Property
+            </a>
+
+            <button
+                onclick="showMessage('Login feature is available in the future version.')"
+                class="text-left text-slate-600">
+                Log In
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
 
 
-    <main>
+<!-- ================= HERO ================= -->
 
-        <!-- ==================== HERO SECTION ==================== -->
-        <section class="relative bg-white">
-            <div
-                class="container mx-auto px-6 py
+<main>
+
+<section id="home" class="bg-white">
+
+    <div class="max-w-7xl mx-auto px-6 py-20">
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- Hero Text -->
+            <div>
+
+                <span
+                    class="inline-block bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold mb-5">
+                    Your Urban Living Assistant
+                </span>
+
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900">
+
+                    Moving to a
+                    <span class="text-indigo-600">
+                        new city?
+                    </span>
+
+                    <br>
+
+                    We've got your back.
+
+                </h1>
+
+                <p class="mt-6 text-lg text-slate-600 max-w-xl">
+
+                    Find homes, rent essential appliances, connect with
+                    trusted local services and manage your living expenses
+                    from one simple platform.
+
+                </p>
